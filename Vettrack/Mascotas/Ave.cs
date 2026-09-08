@@ -6,6 +6,6 @@ namespace Vettrack.Mascotas
 {
     public class Ave
     {
-        int alas { get; set; }
+        int EnvergaduraAlas { get; set; }
     }
 }
