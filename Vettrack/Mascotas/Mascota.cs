@@ -6,10 +6,10 @@ namespace Vettrack.Mascotas
 {
     public abstract class Mascota
     {
-        string Nombre { get; set; }
-        DateOnly FechaNacimiento { get; set; }
-        string Dueno { get; set; }
-        string Especie { get; set; }
+        public string Nombre { get; set; }
+        public DateOnly FechaNacimiento { get; set; }
+        public string Dueno { get; set; }
+        public string Especie { get; }
 
         public Mascota(string Nombre, DateOnly FechaNacimiento, string Dueno, string Especie)
         {

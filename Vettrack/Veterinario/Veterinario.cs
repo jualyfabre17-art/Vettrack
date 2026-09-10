@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
+using Vettrack.Mascotas;
 
 namespace Vettrack.Veterinarios
 {
@@ -11,6 +12,8 @@ namespace Vettrack.Veterinarios
         public string NombreCompleto { get; set; }
         public string Especialidad {  get; set; }
         public string Telefono { get; set; }
+        public Mascota Mascota { get; private set; }
+        public Veterinario Veterinarioo { get; private set; }
 
         public Veterinario( int IdVeterinario, string NombreCompleto, string Especialidad, string Telefono)
         {

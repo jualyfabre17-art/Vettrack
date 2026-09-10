@@ -7,6 +7,6 @@ namespace Vettrack.Mascotas
 {
     public class Gato 
     {
-        bool EsDeInterior { get; set; }
+       public bool EsDeInterior { get; set; }
     }
 }
