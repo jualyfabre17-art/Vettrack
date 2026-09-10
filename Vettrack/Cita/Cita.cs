@@ -6,7 +6,7 @@ namespace Vettrack.Citas
 {
     public class Cita
     {
-        public int IdCita { get; set; }
+        public int IdCita { get; private set; }
         public DateTime FechaHora { get; set; }
         public string MotivoConsulta { get; set; }
         public string MascotaAsociada { get; set; }

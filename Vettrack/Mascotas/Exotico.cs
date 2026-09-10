@@ -6,6 +6,6 @@ namespace Vettrack.Mascotas
 {
     public class Exotico
     {
-        bool RequierePermiso { get; set; }
+       public bool RequierePermiso { get; set; }
     }
 }

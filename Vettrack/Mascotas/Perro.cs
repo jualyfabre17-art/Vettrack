@@ -6,7 +6,7 @@ namespace Vettrack.Mascotas
 {
     public class Perro 
     {
-        string Raza { get; set; }
+         public string Raza { get; private set; }
 
     }
 }
