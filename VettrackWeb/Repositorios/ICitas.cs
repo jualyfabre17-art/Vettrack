@@ -5,7 +5,7 @@ using Vettrack.Citas;
 
 namespace Vettrack.Repositorios
 {
-    public class ICitas : IRepositorio<Cita>
+    public class RepositorioCitas : IRepositorio<Cita>
     {
         private List <Cita> cita = new List<Cita> ();
 
