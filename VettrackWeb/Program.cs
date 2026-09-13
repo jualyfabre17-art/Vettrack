@@ -1,20 +1,29 @@
+using Vettrack.Mascotas;
+using Vettrack.Citas;
+using Vettrack.Duenos;
+using Vettrack.Repositorios;
+using Vettrack.Veterinarios;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IRepositorio<Mascota>, RepositorioMascota>();
+builder.Services.AddSingleton<IRepositorio<Dueno>, RepositorioDueno>();
+builder.Services.AddSingleton<IRepositorio<Veterinario>, RepositorioVeterinario>();
+builder.Services.AddSingleton<IRepositorio<Cita>, RepositorioCitas>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-
+app.UseDefaultFiles();
 app.UseRouting();
 
 app.UseAuthorization();

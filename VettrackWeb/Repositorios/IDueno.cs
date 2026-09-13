@@ -5,7 +5,7 @@ using Vettrack.Duenos;
 
 namespace Vettrack.Repositorios
 {
-    public class IDueno: IRepositorio <Dueno>
+    public class RepositorioDueno: IRepositorio <Dueno>
     {
         private List <Dueno> dueno = new List<Dueno> ();
         public void Agregar(Dueno entidad) { }
