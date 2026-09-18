@@ -8,16 +8,16 @@ namespace Vettrack.Veterinarios
 {
     public class Veterinario
     {
-        public int IdVeterinario { get; set; }
+        public int Id { get; set; }
         public string NombreCompleto { get; set; }
         public string Especialidad {  get; set; }
         public string Telefono { get; set; }
         public Mascota Mascota { get; private set; }
         public Veterinario Veterinarioo { get; private set; }
 
-        public Veterinario( int IdVeterinario, string NombreCompleto, string Especialidad, string Telefono)
+        public Veterinario( int Id, string NombreCompleto, string Especialidad, string Telefono)
         {
-            this.IdVeterinario = IdVeterinario;
+            this.Id = Id;
             this.NombreCompleto = NombreCompleto;
             this.Especialidad = Especialidad;
             this.Telefono = Telefono;
