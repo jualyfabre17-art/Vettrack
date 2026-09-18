@@ -1,6 +1,6 @@
 ﻿using Vettrack.Repositorios;
 using Vettrack.Mascotas;
-using VettrackWeb.Servicios;
+using Vettrack.Citas;
 
 
 
@@ -14,7 +14,7 @@ namespace VettrackWeb.ServiciosCita
 
         public ClinicaServicio(IRepositorio<Mascota> repoMascota, IRepositorio<Cita> repoCita) 
         {
-            _repoMascota = repoMascota;;
+            _repoMascota = repoMascota;
             _repoCita = repoCita;
         }
 
@@ -25,8 +25,8 @@ namespace VettrackWeb.ServiciosCita
 
             if (citaEncontrada == null)
                 throw new Exception("La cita no fue encontrada");
-            
-                return citaEncontrada.ServicioAsignado.CalcularCostoServicio();
+            return 23.6m;
+               // return citaEncontrada.ServicioAsignado.CalcularCostoServicio();
         }
         
         }

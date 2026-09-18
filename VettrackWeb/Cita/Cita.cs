@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VettrackWeb.Servicios;
+
 
 namespace Vettrack.Citas
 {
     public class Cita
     {
-        public int IdCita { get; private set; }
+        public int Id { get; set; }
         public DateTime FechaHora { get; set; }
         public string MotivoConsulta { get; set; }
         public string MascotaAsociada { get; set; }
 
-        public Cita(int IdCita, DateTime FechaHora, string MotivoConsulta, string MascotaAsociada) 
+        public Cita(int Id, DateTime FechaHora, string MotivoConsulta, string MascotaAsociada) 
         {
-            this.IdCita = IdCita;
+            this.Id = Id;
             this.FechaHora = FechaHora;
             this.MotivoConsulta = MotivoConsulta;
             this.MascotaAsociada = MascotaAsociada;
