@@ -5,7 +5,7 @@ using Vettrack.Veterinarios;
 
 namespace Vettrack.Repositorios
 {
-    public class RepositorioVeterinario: IRepositorio<Veterinario>
+    public class VeterinarioRepository: IRepositorio<Veterinario>
     {
         private List<Veterinario> veterinario = new();
         private int siguienteId = 1;
