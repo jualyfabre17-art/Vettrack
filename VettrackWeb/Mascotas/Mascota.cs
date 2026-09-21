@@ -21,7 +21,7 @@ namespace Vettrack.Mascotas
             this.Especie = Especie;
         }
 
-        public abstract decimal CalcularCosto();
+        public abstract decimal CostoTotalCita();
         public abstract void Recomendaciones(string recomendacion);
     }
 }

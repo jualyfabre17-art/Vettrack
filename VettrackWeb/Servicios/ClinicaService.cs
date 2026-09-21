@@ -1,34 +1,66 @@
-﻿using Vettrack.Repositorios;
-using Vettrack.Mascotas;
+﻿using Microsoft.AspNetCore.DataProtection.Repositories;
 using Vettrack.Citas;
+using Vettrack.Interfaces;
+using Vettrack.Mascotas;
+using Vettrack.Repositorios;
 
 
 
 namespace VettrackWeb.ServiciosCita
 {
-        public class ClinicaServicio  { 
-        
-        private readonly IRepositorio<Mascota> _repoMascota;
-        
-        private readonly IRepositorio<Cita> _repoCita;
+     public class ClinicaService  {
+     private readonly IRepositorio<Cita> _citaRepository;
+     private readonly IRepositorio<Mascota> _mascotaRepository;
 
-        public ClinicaServicio(IRepositorio<Mascota> repoMascota, IRepositorio<Cita> repoCita) 
+        public ClinicaService(IRepositorio<Cita> citaRepository, IRepositorio<Mascota> mascotarepository)
         {
-            _repoMascota = repoMascota;
-            _repoCita = repoCita;
-        }
-
-        public decimal CalcularCostoTotalCita(int citaId) 
-        {
-            
-            var citaEncontrada = _repoCita.ObtenerPorId(citaId);
-
-            if (citaEncontrada == null)
-                throw new Exception("La cita no fue encontrada");
-            return 23.6m;
-               // return citaEncontrada.ServicioAsignado.CalcularCostoServicio();
+            _citaRepository = citaRepository;
+            _mascotaRepository = mascotarepository;
         }
         
+        public decimal CostoTotalCita(int mascotaId)
+        {
+            var mascota = _mascotaRepository.ObtenerPorId(mascotaId);
+
+            if(mascota == null)
+            {
+                throw new Exception("Cita no encontrada");
+            }
+            else
+            {
+                return mascota.CostoTotalCita();
+            }
         }
+
+        public bool Disponibilidad(int veterinarioId, DateTime FechaPropuesta, TimeSpan MargenMinimo)
+        {
+            var veterinarioDispo = _citaRepository.ObtenerPorId(veterinarioId);
+
+            foreach(var cita in _citaRepository.ObtenerTodos())
+            {
+                TimeSpan intervaloCita = (cita.FechaHora - FechaPropuesta).Duration();
+
+                if(intervaloCita < MargenMinimo)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public List<Mascota> ObtenerMascotasConVacunacionPendiente()
+        {
+            var pendientes = new List<Mascota>();
+
+            foreach (var mascota in _mascotaRepository.ObtenerTodos())
+            {
+                if (mascota is IVacunable vacunable && !vacunable.EstaVacunacionAlDia())
+                {
+                    pendientes.Add(mascota);
+                }
+            }
+            return pendientes;
+        }
+
+    }
     
 }
