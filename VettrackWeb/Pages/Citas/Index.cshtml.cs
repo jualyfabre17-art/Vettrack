@@ -7,10 +7,10 @@ namespace VettrackWeb.Pages.Citas
 {
     public class CitasIndexModel : PageModel
     {
-        private readonly RepositorioCitas _repositorioCita;
+        private readonly CitaRepository _repositorioCita;
         public IEnumerable<Cita> Citas { get; set; } = new List<Cita>();
 
-        public CitasIndexModel(RepositorioCitas repositorioCitas) 
+        public CitasIndexModel(CitaRepository repositorioCitas) 
         {
             _repositorioCita = repositorioCitas;
         }

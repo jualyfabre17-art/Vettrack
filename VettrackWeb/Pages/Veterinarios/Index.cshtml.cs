@@ -7,10 +7,10 @@ namespace VettrackWeb.Pages.Veterinarios
 {
     public class VeterinarioIndexModel : PageModel
     {
-        private readonly RepositorioVeterinario _repositorioVeterinario;
+        private readonly VeterinarioRepository _repositorioVeterinario;
         public IEnumerable<Veterinario> Veterinarios { get; set; } = new List<Veterinario>();
 
-        public VeterinarioIndexModel(RepositorioVeterinario repositorioVeterinario) 
+        public VeterinarioIndexModel(VeterinarioRepository repositorioVeterinario) 
         {
             _repositorioVeterinario = repositorioVeterinario;
         }

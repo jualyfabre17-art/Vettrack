@@ -28,7 +28,7 @@ namespace VettrackWeb.ServiciosCita
             }
             else
             {
-                return mascota.CostoTotalCita();
+                return mascota.CalcularCostoConsultaBase();
             }
         }
 
