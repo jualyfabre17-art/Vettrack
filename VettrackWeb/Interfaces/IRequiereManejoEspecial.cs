@@ -6,7 +6,7 @@ namespace Vettrack.Interfaces
 {
     public interface IRequiereManejoEspecial
     {
-        double ProtocoloEspecial();
-        
+        string ProtocoloManejo();
+        decimal RecargoManejo();
     }
 }

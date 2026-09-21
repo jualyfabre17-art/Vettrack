@@ -12,9 +12,9 @@ namespace Vettrack.Repositorios
         private int siguienteId = 1;
         public void Agregar(Mascota entidad) { entidad.Id = siguienteId++; mascota.Add(entidad); }
         public Mascota? ObtenerPorId(int id) => mascota.FirstOrDefault(m => m.Id == id);
-        public List<Mascota> ObtenerTodos() { return mascota; }
+        public List<Mascota> ObtenerTodos() => mascota; 
         public void Actualizar(Mascota entidad) { var index = mascota.FindIndex(m => m.Id == entidad.Id);
-            if (index > 0) mascota[index] = entidad;}
+            if (index >= 0) mascota[index] = entidad;}
         public void Eliminar(int id) { var _mascota = ObtenerPorId(id);
             if (_mascota != null) mascota.Remove(_mascota); }
     }

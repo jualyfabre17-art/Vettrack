@@ -19,5 +19,6 @@ namespace Vettrack.Citas
             this.MotivoConsulta = MotivoConsulta;
             this.MascotaAsociada = MascotaAsociada;
         }
+        
     }
 }
