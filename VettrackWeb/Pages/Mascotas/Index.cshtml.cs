@@ -8,15 +8,29 @@ namespace VettrackWeb.Pages.Mascotas
     public class MascotaIndexModel : PageModel
     {
         private readonly IRepositorio<Mascota> _repositorioMascota;
-        public IEnumerable<Mascota> Mascotas = new List<Mascota>();
+
         public MascotaIndexModel(IRepositorio<Mascota> repositorioMascota)
         {
             _repositorioMascota = repositorioMascota;
         }
 
+        [BindProperty(SupportsGet = true)]
+        public int? MascotaId { get; set; }
+
+        public IEnumerable<Mascota> mascotas { get; set; } = new List<Mascota>();
         public void OnGet()
         {
-            Mascotas = _repositorioMascota.ObtenerTodos();
+            var mascota = _repositorioMascota.ObtenerPorId(MascotaId.Value);
+
+            if (mascota != null)
+            {
+                
+                mascotas = new List<Mascota> { mascota };
+            
+        }
+            else { 
+            mascotas = _repositorioMascota.ObtenerTodos();
+            }
         }
     }
 }

@@ -1,4 +1,33 @@
 ﻿@page
-@model VettrackWeb.Pages.Mascotas.MascotaIndexModel
+@model MascotaIndexModel
 @{
 }
+<h1>"Todas Las MASCOTAS"</h1>
+
+<form method="get">
+    <select name="Mascota" onchange="this.form.submit()">
+    <option value="">"Ver todas las mascotas"</option>
+        <option value="1">"Listar todas las mascotas"</option>
+    </select>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>"Mascotas"</th>
+            <th>"Dueno"</th>
+        </tr>
+    </thead>
+
+    
+        <tbody>
+            @foreach (var m in Model.mascotas)
+            {
+                <tr>
+                    <td>@m.Nombre</td>
+                    <td>@m.Dueno</td>
+                </tr>
+            }
+        </tbody>
+    
+</table>
