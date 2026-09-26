@@ -2,7 +2,7 @@
 @model MascotaIndexModel
 @{
 }
-<h1>"Todas Las MASCOTAS"</h1>
+<h2>"Todas Las MASCOTAS"</h2>
 
 <form method="get">
     <select name="Mascota" onchange="this.form.submit()">
@@ -31,3 +31,44 @@
         </tbody>
     
 </table>
+
+<h2>Registrar mascota</h2>
+<form method="post">
+    <fieldset>
+    <Legend>Datos Mascota</legend>
+    <div>
+        <label for="txtTipo">Tipos de mascota:</label>
+        <input type="text" id="txtTipo" name="TipoMascota" required/>
+    </div>
+    <div>
+        <label for="cboClasificacion">Clasificacion de mascotas</label>
+        <select id="cboClasificacion" name="SeleccionarMascota" required/>
+        <option value="">Tipo mascota:</option>
+        <option value="perro">Perro</option>
+        <option value="gato">Gato</option>
+        <option value="ave">Ave</option>
+        <option value="exotico">Exotico</option>
+    </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Caracteristicas especificas:</legend>
+        <div>
+            <label for="txtRaza"> Raza del perro (solo para perros)</label>
+            <input type="text" id="txtRaza" name="RazaPerro" />
+        </div>
+        <div>
+            <label for="txtInterior"> El gato es de interioe? (solo para gatos)</label>
+            <input type="text" id="txtInterior" name="GatoInterior"/>
+        </div>
+        <div>
+            <label for="txtEspecie">Especie del ave (solo para aves)</label>
+            <input type="text" id="txtEspecie" name="AveEspecie"/>
+        </div>
+        <div>
+            <label for="txtEspecieExotico">Especie del animal exotico (solo para animales exotico)</label>
+            <input type="text" id="txtEspecieExotico" name="EspecieExotico"/>
+        </div>
+    </fieldset>
+    <button type="submit">Enviar mascota</button>
+</form>

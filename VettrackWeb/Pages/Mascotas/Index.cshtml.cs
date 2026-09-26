@@ -32,5 +32,24 @@ namespace VettrackWeb.Pages.Mascotas
             mascotas = _repositorioMascota.ObtenerTodos();
             }
         }
+
+        
+        [BindProperty] public string Raza { get; set; } = string.Empty;
+        [BindProperty] public bool EsInterior { get; set; }
+        [BindProperty] public string Especie { get; set; } = string.Empty;
+        [BindProperty] public string TipoMascota { get; set; } = string.Empty;
+
+        public void OnPost() 
+        {
+            Mascota nuevaMascota;
+
+            if(TipoMascota == "Perro")
+            {
+                nuevaMascota = new Perro
+                {
+                    Nombre = this.Nombre
+                };
+            }
+        }
     }
 }
