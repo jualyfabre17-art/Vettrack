@@ -8,9 +8,9 @@ namespace Vettrack.Mascotas
     public abstract class Mascota
     {
         public int Id { get; set; }
-        public string Nombre { get; private set; }
-        public DateTime FechaNacimiento { get; private set; }
-        protected decimal PesoKg { get; set; }
+        public string Nombre { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public decimal PesoKg { get; set; }
 
         public int DuenoId { get; set; }
         public Dueno? Dueno { get; set; }
