@@ -1,0 +1,58 @@
+﻿@page
+@model VettrackWeb.Pages.Mascotas.CreateModel
+@{
+}
+<h1 class="h3 mb-4">Registrar nueva mascota</h1>
+
+<form method="post" class="row g-3">
+    <fieldset class="col-12">
+        <legend class="h6">Datos generales</legend>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="tipo" class="form-label">Tipo de mascota</label>
+                <select id="tipo" asp-for="TipoSeleccionado" class="form-select" required>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Ave">Ave</option>
+                    <option value="Exótico">Exótico</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input id="nombre" asp-for="Nombre" class="form-control" required minlength="2" />
+            </div>
+            <div class="col-md-4">
+                <label for="dueno" class="form-label">Dueño</label>
+                <select id="dueno" asp-for="DuenoId" class="form-select" required>
+                    @foreach (var d in Model.Duenos)
+                    {
+                        <option value="@d.Id">@d.Nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="col-12">
+        <legend class="h6">Detalles físicos</legend>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+                <input id="nacimiento" asp-for="FechaNacimiento" type="date" class="form-control" required />
+            </div>
+            <div class="col-md-4">
+                <label for="peso" class="form-label">Peso (kg)</label>
+                <input id="peso" asp-for="PesoKg" type="number" step="0.1" min="0.1" class="form-control" required />
+            </div>
+            <div class="col-md-4">
+                <label for="detalle" class="form-label">Raza / especie / detalle</label>
+                <input id="detalle" asp-for="DetalleEspecifico" class="form-control" />
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="col-12 d-flex gap-2">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-page="Index" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+</form>

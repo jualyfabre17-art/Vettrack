@@ -8,7 +8,8 @@ using VettrackWeb.ServiciosCita;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{options.Conventions.AddPageRoute("/Mascotas", "");});
 builder.Services.AddSingleton<IRepositorio<Mascota>, RepositorioMascota>();
 builder.Services.AddSingleton<IRepositorio<Dueno>, RepositorioDueno>();
 builder.Services.AddSingleton<IRepositorio<Veterinario>, VeterinarioRepository>();

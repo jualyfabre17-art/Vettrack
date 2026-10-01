@@ -1,74 +1,46 @@
 ﻿@page 
-@model MascotaIndexModel
+@model VettrackWeb.Pages.Mascotas.MascotaIndexModel
 @{
 }
-<h2>"Todas Las MASCOTAS"</h2>
+<section class="mb-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <h1 class="h3">Mascotas registradas</h1>
+        <a class="btn btn-success" asp-page="Create" >Registrar mascota</a>
+    </div>
+</section>
 
-<form method="get">
-    <select name="Mascota" onchange="this.form.submit()">
-    <option value="">"Ver todas las mascotas"</option>
-        <option value="1">"Listar todas las mascotas"</option>
+<form method="get" class="mb-3" style="max-width:320px;">
+    <select name="Filtro" class="form-select" onchange="this.form.submit()">
+        <option value="">Todos los tipos</option>
+        <option value="Perro">Perro</option>
+        <option value="Gato">Gato</option>
+        <option value="Ave">Ave</option>
+        <option value="Exótico">Exótico</option>
     </select>
 </form>
 
-<table>
-    <thead>
-        <tr>
-            <th>"Mascotas"</th>
-            <th>"Dueno"</th>
-        </tr>
-    </thead>
-
-    
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Edad</th>
+                <th>Costo consulta base</th>
+                <th></th>
+            </tr>
+        </thead>
         <tbody>
-            @foreach (var m in Model.mascotas)
+            @foreach (var m in Model.Mascotas)
             {
                 <tr>
                     <td>@m.Nombre</td>
-                    <td>@m.Dueno</td>
+                    <td><span class="badge bg-secondary">@m.TipoMascota</span></td>
+                    <td>@m.EdadEnAnios años</td>
+                    <td>@m.CalcularCostoConsultaBase().ToString("C")</td>
+                    <td><a asp-page="Details" asp-route-id="@m.Id" class="btn btn-sm btn-outline-primary">Ver</a></td>
                 </tr>
             }
         </tbody>
-    
-</table>
-
-<h2>Registrar mascota</h2>
-<form method="post">
-    <fieldset>
-    <Legend>Datos Mascota</legend>
-    <div>
-        <label for="txtTipo">Tipos de mascota:</label>
-        <input type="text" id="txtTipo" name="TipoMascota" required/>
-    </div>
-    <div>
-        <label for="cboClasificacion">Clasificacion de mascotas</label>
-        <select id="cboClasificacion" name="SeleccionarMascota" required/>
-        <option value="">Tipo mascota:</option>
-        <option value="perro">Perro</option>
-        <option value="gato">Gato</option>
-        <option value="ave">Ave</option>
-        <option value="exotico">Exotico</option>
-    </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Caracteristicas especificas:</legend>
-        <div>
-            <label for="txtRaza"> Raza del perro (solo para perros)</label>
-            <input type="text" id="txtRaza" name="RazaPerro" />
-        </div>
-        <div>
-            <label for="txtInterior"> El gato es de interioe? (solo para gatos)</label>
-            <input type="text" id="txtInterior" name="GatoInterior"/>
-        </div>
-        <div>
-            <label for="txtEspecie">Especie del ave (solo para aves)</label>
-            <input type="text" id="txtEspecie" name="AveEspecie"/>
-        </div>
-        <div>
-            <label for="txtEspecieExotico">Especie del animal exotico (solo para animales exotico)</label>
-            <input type="text" id="txtEspecieExotico" name="EspecieExotico"/>
-        </div>
-    </fieldset>
-    <button type="submit">Enviar mascota</button>
-</form>
+    </table>
+</div>
