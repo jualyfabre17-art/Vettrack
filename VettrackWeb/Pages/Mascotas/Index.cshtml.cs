@@ -13,24 +13,20 @@ namespace VettrackWeb.Pages.Mascotas
         {
             _repositorioMascota = repositorioMascota;
         }
+        public List<Mascota> Mascotas { get; set; } = new();
 
         [BindProperty(SupportsGet = true)]
-        public int? MascotaId { get; set; }
+        public string? Filtro { get; set; }
 
         public IEnumerable<Mascota> mascotas { get; set; } = new List<Mascota>();
         public void OnGet()
         {
-            var mascota = _repositorioMascota.ObtenerPorId(MascotaId.Value);
+            var mascota = _repositorioMascota.ObtenerTodos();
 
-            if (mascota != null)
-            {
-                
-                mascotas = new List<Mascota> { mascota };
-            
-        }
-            else { 
-            mascotas = _repositorioMascota.ObtenerTodos();
-            }
+            Mascotas = string.IsNullOrWhiteSpace(Filtro)
+                ? Mascotas
+                : Mascotas.Where(m => m.TipoMascota.Equals(Filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+
         }
 
         [BindProperty] public string Nombre { get; private set; } = string.Empty;
