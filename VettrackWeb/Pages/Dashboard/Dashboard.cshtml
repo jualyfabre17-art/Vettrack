@@ -1,0 +1,39 @@
+﻿@page
+@model VettrackWeb.Pages.Dashboard.IndexModel
+
+<h1 class="h3 mb-4">Panel general</h1>
+
+<div class="dashboard-grid">
+    <article class="dashboard-card">
+        <p class="dashboard-card__label">Mascotas registradas</p>
+        <p class="dashboard-card__value">@Model.TotalMascotas</p>
+    </article>
+
+    @foreach (var item in Model.ConteoPorTipo)
+    {
+        <article class="dashboard-card">
+            <p class="dashboard-card__label">@item.Key</p>
+            <p class="dashboard-card__value">@item.Value</p>
+        </article>
+    }
+</div>
+
+<section class="mt-5">
+    <h2 class="h5">Vacunación pendiente</h2>
+    @if (!Model.VacunacionPendiente.Any())
+    {
+        <p class="text-muted">Todas las mascotas vacunables están al día.</p>
+    }
+    else
+    {
+        <ul class="list-group">
+            @foreach (var m in Model.VacunacionPendiente)
+            {
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>@m.Nombre (@m.TipoMascota)</span>
+                    <span class="badge bg-warning text-dark">Pendiente</span>
+                </li>
+            }
+        </ul>
+    }
+</section>

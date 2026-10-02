@@ -1,4 +1,32 @@
-﻿@page
+﻿
+@page "{id:int}"
+@using Vettrack.Interfaces
 @model VettrackWeb.Pages.Mascotas.DetailsModel
-@{
-}
+
+<h1 class="h3 mb-1">@Model.Mascota!.Nombre</h1>
+<span class="badge bg-secondary mb-3">@Model.Mascota.TipoMascota</span>
+
+<dl class="row">
+    <dt class="col-sm-3">Edad</dt>
+    <dd class="col-sm-9">@Model.Mascota.EdadEnAnios años</dd>
+
+    <dt class="col-sm-3">Costo de consulta base</dt>
+    <dd class="col-sm-9">@Model.Mascota.CalcularCostoConsultaBase().ToString("C")</dd>
+
+    <dt class="col-sm-3">Recomendaciones de cuidado</dt>
+    <dd class="col-sm-9">@Model.Mascota.ObtenerRecomendacionesCuidado()</dd>
+
+    @if (Model.Mascota is IRequiereManejoEspecial manejo)
+    {
+        <dt class="col-sm-3">Protocolo de manejo</dt>
+        <dd class="col-sm-9">@manejo.ProtocoloManejo() (recargo: @manejo.RecargoManejo().ToString("C"))</dd>
+    }
+
+    @if (Model.Mascota is IVacunable vacunable)
+    {
+        <dt class="col-sm-3">Vacunación</dt>
+        <dd class="col-sm-9">@(vacunable.EstaVacunacionAlDia() ? "Al día" : "Pendiente")</dd>
+    }
+</dl>
+
+<a asp-page="Index" class="btn btn-outline-secondary">Volver</a>
